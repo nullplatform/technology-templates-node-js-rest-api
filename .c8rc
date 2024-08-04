@@ -1,0 +1,5 @@
+{
+  "all": true,
+  "exclude": ["test", "migrations", "coverage"],
+  "reporter": ["json-summary", "html"]
+}

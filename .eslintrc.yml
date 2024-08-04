@@ -1,0 +1,38 @@
+env:
+  commonjs: false
+  es2021: true
+  node: true
+  mocha: true
+  es6: true
+extends:
+  - airbnb-base
+  - plugin:mocha/recommended
+  - plugin:lodash/recommended
+  - plugin:prettier/recommended
+parserOptions:
+  ecmaVersion: latest
+plugins:
+  - mocha
+  - lodash
+rules:
+  {
+    import/extensions: [0, { <js>: 'always' }],
+    mocha/prefer-arrow-callback: ['error', { allowNamedFunctions: false }],
+    mocha/no-mocha-arrows: 'off',
+    lodash/prefer-lodash-method: 'off',
+    import/no-extraneous-dependencies:
+      [
+        'error',
+        {
+          devDependencies: true,
+          optionalDependencies: false,
+          peerDependencies: false,
+          packageDir: './',
+        },
+      ],
+    class-methods-use-this: 'off',
+  }
+overrides:
+  - files:
+      - '*.spec.js'
+    rules: { no-unused-expressions: 'off' }

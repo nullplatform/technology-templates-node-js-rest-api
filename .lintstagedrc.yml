@@ -1,0 +1,10 @@
+'*.js':
+  - 'npm run prettier'
+  - 'npm run lint:fix'
+  - 'git add .'
+'*.json':
+  - 'npm run prettier'
+  - 'git add .'
+'*.yml':
+  - 'npm run prettier'
+  - 'git add .'

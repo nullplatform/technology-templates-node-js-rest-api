@@ -1,0 +1,29 @@
+/*
+  Refer to 'custom-environment-variables.json5' to determine which environment variables override the values in this file
+*/
+{
+  server: {
+    disableRequestLogging: true,
+    log: {
+      transport: null, // Use stdout json output for production logging
+    },
+  },
+  client: {
+    auth: {
+      prefixUrl: 'https://auth.nullplatform.io',
+    },
+    coreEntities: {
+      prefixUrl: 'https://api.nullplatform.io',
+    },
+  },
+  topic: {
+    region: 'us-east-1',
+    endpoint: null,
+    audit: {
+      enabled: true,
+      region: 'us-east-1',
+      endpoint: null,
+      topicArn: 'arn:aws:sns:us-east-1:283477532906:audit',
+    },
+  },
+}

@@ -1,0 +1,29 @@
+/*
+  Refer to 'custom-environment-variables.json5' to determine which environment variables override the values in this file
+*/
+{
+  server: {
+    disableRequestLogging: true,
+    log: {
+      level: 'error',
+    },
+  },
+  client: {
+    auth: {
+      prefixUrl: 'http://localhost:8082/authz',
+    },
+    coreEntities: {
+      prefixUrl: 'http://localhost:8082/api',
+    },
+  },
+  topic: {
+    region: 'us-east-1',
+    endpoint: 'http://localhost:4567',
+    audit: {
+      enabled: false,
+      region: 'us-east-1',
+      endpoint: 'http://localhost:4567',
+      topicArn: 'arn:aws:sns:us-east-1:000000000000:audit',
+    },
+  },
+}

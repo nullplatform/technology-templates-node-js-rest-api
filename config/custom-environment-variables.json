@@ -1,0 +1,24 @@
+{
+  "server": {
+    "host": "NODE_HOST",
+    "port": "NODE_PORT",
+    "log": {
+      "level": "LOG_LEVEL"
+    }
+  },
+  "client": {
+    "apiKey": "API_KEY",
+    "auth": {
+      "prefixUrl": "AUTH_HOST"
+    },
+    "coreEntities": {
+      "prefixUrl": "CORE_ENTITIES_HOST"
+    }
+  },
+  "topic": {
+    "audit": {
+      "enabled": "AUDIT_TOPIC_ENABLED",
+      "topicArn": "AUDIT_TOPIC"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+/*
+  Refer to 'custom-environment-variables.json5' to determine which environment variables override the values in this file
+*/
+{
+  server: {
+    host: '0.0.0.0',
+    port: '8080',
+    disableRequestLogging: false,
+    maxParamLength: 200,
+    swagger: {
+      enabled: false,
+    },
+    log: {
+      level: 'info',
+      errorKey: 'error',
+      redact: ['error.cause.options.headers.authorization', 'req.headers.authorization'],
+      base: null,
+      timestamp: false,
+      transport: {
+        target: 'pino-pretty',
+        options: {
+          colorize: true,
+          singleLine: true,
+        },
+      },
+    },
+  },
+  client: {
+    logging: true,
+    // "apiKey" must be loaded from environment variables see: custom-environment-variables.json5
+    auth: {
+      prefixUrl: 'https://auth.nullplatform.io',
+      timeout: 5000,
+    },
+    coreEntities: {
+      prefixUrl: 'https://api.nullplatform.io',
+      timeout: 5000,
+    },
+  },
+  topic: {
+    enabled: false,
+    region: 'us-east-1',
+    endpoint: null,
+    audit: {
+      enabled: true,
+      region: 'us-east-1',
+      endpoint: null,
+      topicArn: 'arn:aws:sns:us-east-1:283477532906:audit',
+    },
+  },
+}

@@ -1,0 +1,23 @@
+{
+  server: {
+    swagger: {
+      enabled: false,
+    },
+  },
+  client: {
+    auth: {
+      prefixUrl: 'http://localhost:8081/authz',
+    },
+    coreEntities: {
+      prefixUrl: 'http://localhost:8081/api',
+    },
+  },
+  topic: {
+    enabled: false,
+    audit: {
+      region: 'us-east-1',
+      endpoint: 'http://localhost:4566',
+      topicArn: 'arn:aws:sns:us-east-1:000000000000:audit',
+    },
+  },
+}

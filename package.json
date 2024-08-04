@@ -1,0 +1,58 @@
+{
+  "name": "service-api",
+  "version": "1.0.0",
+  "description": "nullplatform service API",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:dev": "docker-compose up -d && node src/index.js",
+    "test": "NODE_ENV=test AWS_ACCESS_KEY_ID=x AWS_SECRET_ACCESS_KEY=x npx c8 npx mocha",
+    "test:unit": "NODE_ENV=test npx mocha test/unit/**/*.spec.js",
+    "test:functional": "NODE_ENV=test npx mocha test/functional/**/*.spec.js",
+    "compose:up": "docker-compose up -d",
+    "compose:down": "docker-compose down",
+    "prettier": "npx prettier --write .",
+    "lint": "npx eslint --max-warnings=0 .",
+    "lint:fix": "npx eslint --max-warnings=0 . --fix",
+    "prepare": "if [ \"${CI:-}\" != \"true\" ]; then husky; fi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nullplatform/rest-api.git"
+  },
+  "author": "nullplatform",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nullplatform/rest-api/issues"
+  },
+  "homepage": "https://github.com/nullplatform/rest-api#readme",
+  "dependencies": {
+    "@nullplatform/http-client": "^0.0.3",
+    "@nullplatform/log": "^0.0.4",
+    "@nullplatform/server": "^0.0.3",
+    "config": "^3.3.12",
+    "dotenv": "^16.4.5",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@nullplatform/log-pretty": "^0.0.3",
+    "c8": "^10.1.2",
+    "chai": "^5.1.1",
+    "chai-as-promised": "^8.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-lodash": "^7.4.0",
+    "eslint-plugin-mocha": "^10.5.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.8",
+    "mocha": "^10.7.0",
+    "prettier": "3.2.5",
+    "sinon": "^18.0.0",
+    "sinon-chai": "^4.0.0",
+    "uuid": "^10.0.0"
+  }
+}
