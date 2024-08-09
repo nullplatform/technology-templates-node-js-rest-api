@@ -7,8 +7,17 @@
     port: '8080',
     disableRequestLogging: false,
     maxParamLength: 200,
-    swagger: {
-      enabled: false,
+    openAPI: {
+      config: {
+        info: {
+          title: 'My API Definition',
+          version: '0.0.1',
+        },
+        servers: [{ url: 'https://api.nullplatform.com' }],
+      },
+      uiConfig: {
+        routePrefix: '/api-docs',
+      },
     },
     log: {
       level: 'info',
@@ -23,6 +32,10 @@
           singleLine: true,
         },
       },
+    },
+    cluster: {
+      workers: null,
+      respawn: 1000,
     },
   },
   client: {

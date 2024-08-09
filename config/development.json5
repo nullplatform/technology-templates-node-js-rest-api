@@ -1,7 +1,9 @@
 {
   server: {
-    swagger: {
-      enabled: false,
+    host: 'localhost',
+    cluster: {
+      workers: 2,
+      respawn: 5000,
     },
   },
   client: {

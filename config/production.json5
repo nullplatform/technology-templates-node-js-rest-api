@@ -4,6 +4,7 @@
 {
   server: {
     disableRequestLogging: true,
+    openAPI: null, // Disable OpenAPI for production
     log: {
       transport: null, // Use stdout json output for production logging
     },

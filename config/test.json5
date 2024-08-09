@@ -4,8 +4,13 @@
 {
   server: {
     disableRequestLogging: true,
+    openAPI: null, // Disable OpenAPI for test
     log: {
       level: 'error',
+    },
+    cluster: {
+      workers: 1,
+      respawn: 1000,
     },
   },
   client: {
