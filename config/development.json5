@@ -3,8 +3,15 @@
     host: 'localhost',
     cluster: {
       workers: 2,
-      respawn: 5000,
+      respawn: 10000,
     },
+  },
+  database: {
+    name: 'rest-api-development',
+    schema: 'development',
+    user: 'database-user',
+    password: 'database-password',
+    host: 'localhost',
   },
   client: {
     auth: {

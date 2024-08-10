@@ -13,6 +13,16 @@
       respawn: 1000,
     },
   },
+  database: {
+    name: 'service-api-test',
+    user: 'test-user',
+    password: 'test-password',
+    host: 'localhost',
+    port: 5433,
+    logging: false,
+    schema: 'public',
+    pool: null,
+  },
   client: {
     auth: {
       prefixUrl: 'http://localhost:8082/authz',

@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
+    "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "start:dev": "docker-compose up -d && node src/index.js",
     "test": "NODE_ENV=test AWS_ACCESS_KEY_ID=x AWS_SECRET_ACCESS_KEY=x npx c8 npx mocha",
@@ -15,6 +16,9 @@
     "prettier": "npx prettier --write .",
     "lint": "npx eslint --max-warnings=0 .",
     "lint:fix": "npx eslint --max-warnings=0 . --fix",
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo",
+    "migrate:undo:all": "npx sequelize-cli db:migrate:undo:all",
     "prepare": "if [ \"${CI:-}\" != \"true\" ]; then husky; fi"
   },
   "repository": {
@@ -31,12 +35,15 @@
     "@nullplatform/cluster": "^0.0.6",
     "@nullplatform/http-client": "^0.0.3",
     "@nullplatform/json-keys-transform": "^0.0.3",
-    "@nullplatform/json-schema": "^0.0.1",
+    "@nullplatform/json-schema": "^0.0.2",
     "@nullplatform/log": "^0.0.4",
-    "@nullplatform/server": "^0.0.5",
+    "@nullplatform/relational-database": "^0.0.6",
+    "@nullplatform/server": "^0.0.6",
     "config": "^3.3.12",
     "dotenv": "^16.4.5",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4"
   },
   "devDependencies": {
     "@nullplatform/log-pretty": "^0.0.3",
@@ -54,6 +61,7 @@
     "husky": "^9.1.4",
     "lint-staged": "^15.2.8",
     "mocha": "^10.7.0",
+    "nodemon": "^3.1.4",
     "prettier": "3.2.5",
     "sinon": "^18.0.0",
     "sinon-chai": "^4.0.0",

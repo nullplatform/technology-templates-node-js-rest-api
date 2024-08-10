@@ -9,6 +9,10 @@
       transport: null, // Use stdout json output for production logging
     },
   },
+  database: {
+    name: 'rest-api',
+    schema: 'production',
+  },
   client: {
     auth: {
       prefixUrl: 'https://auth.nullplatform.io',

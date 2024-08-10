@@ -6,6 +6,15 @@
       "level": "LOG_LEVEL"
     }
   },
+  "database": {
+    "name": "DATABASE_NAME",
+    "user": "DATABASE_USER",
+    "password": "DATABASE_PASSWORD",
+    "host": "DATABASE_HOST",
+    "port": "DATABASE_PORT",
+    "logging": "DATABASE_LOGGING",
+    "schema": "DATABASE_SCHEMA"
+  },
   "client": {
     "apiKey": "API_KEY",
     "auth": {

@@ -3,6 +3,8 @@ import { AuthenticatedHttpClient, HttpClient } from '@nullplatform/http-client';
 import Logger from '../logger.js';
 import AuthorizationService from './AuthorizationService.js';
 import CoreEntitiesService from './CoreEntitiesService.js';
+import ExampleService from './ExampleService.js';
+import { exampleRepository } from '../repositories/index.js';
 
 const { logging, apiKey, auth: authOptions } = Config.get('client');
 const loggingFunction = logging
@@ -36,4 +38,6 @@ const coreEntitiesService = new CoreEntitiesService({
   httpClient: new AuthenticatedHttpClient(Config.get('client.coreEntities')),
 });
 
-export { authorizationService, coreEntitiesService };
+const exampleService = new ExampleService({ exampleRepository });
+
+export { authorizationService, coreEntitiesService, exampleService };

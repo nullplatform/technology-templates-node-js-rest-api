@@ -1,7 +1,8 @@
-import { authorizationService } from '../services/index.js';
+import { authorizationService, exampleService } from '../services/index.js';
 import RootController from './RootController.js';
+import ExampleController from './ExampleController.js';
 
 const rootController = new RootController({ authorizationService });
+const exampleController = new ExampleController({ authorizationService, exampleService });
 
-// eslint-disable-next-line import/prefer-default-export
-export { rootController };
+export { rootController, exampleController };

@@ -38,6 +38,22 @@
       respawn: 1000,
     },
   },
+  database: {
+    name: null,
+    schema: null,
+    user: null,
+    password: null,
+    host: null,
+    port: 5432,
+    logging: true,
+    dialect: 'postgres',
+    pool: {
+      max: 10,
+      min: 2,
+      idle: 10000,
+      acquire: 30000,
+    },
+  },
   client: {
     logging: true,
     // "apiKey" must be loaded from environment variables see: custom-environment-variables.json5
