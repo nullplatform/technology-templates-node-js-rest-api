@@ -37,7 +37,7 @@
     "@nullplatform/json-keys-transform": "^0.0.3",
     "@nullplatform/json-schema": "^0.0.2",
     "@nullplatform/log": "^0.0.4",
-    "@nullplatform/relational-database": "^0.0.6",
+    "@nullplatform/relational-database": "^0.0.7",
     "@nullplatform/server": "^0.0.6",
     "config": "^3.3.12",
     "dotenv": "^16.4.5",
@@ -48,6 +48,7 @@
   "devDependencies": {
     "@nullplatform/log-pretty": "^0.0.3",
     "@nullplatform/openapi": "^0.0.1",
+    "@nullplatform/test-container": "^0.0.3",
     "c8": "^10.1.2",
     "chai": "^5.1.1",
     "chai-as-promised": "^8.0.0",
