@@ -19,8 +19,12 @@ jobs:
         uses: actions/checkout@v4
       - name: Start nullplatform CI
         run: np build start
+      - name: Start test containers
+        run: ./test/containers/script.sh --start
       - name: Build asset
-        run: docker build -t main .
+        run: docker build --build-arg GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} --tag main .
+      - name: Stop test containers
+        run: ./test/containers/script.sh --stop
       - name: Push asset
         run: np asset push --type docker-image --source main
       - name: End nullplatform CI

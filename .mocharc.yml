@@ -1,3 +1,6 @@
 timeout: 60000
 recursive: true
 parallel: false
+exclude:
+  - test/containers/**
+  - test/mocks/**
