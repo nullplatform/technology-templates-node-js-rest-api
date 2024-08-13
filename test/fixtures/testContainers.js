@@ -31,4 +31,12 @@ const stopWiremock = async () => {
   Logger.info('Mock server stopped successfully');
 };
 
-export { startDatabase, stopDatabase, startWiremock, stopWiremock };
+const start = () => {
+  return Promise.all([startDatabase(), startWiremock()]);
+};
+
+const stop = () => {
+  return Promise.all([stopDatabase(), stopWiremock()]);
+};
+
+export { start, stop };

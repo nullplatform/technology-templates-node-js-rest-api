@@ -1,6 +1,8 @@
 name: ci-nullplatform
 env:
   NULLPLATFORM_API_KEY: ${{ secrets.NULLPLATFORM_API_KEY }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  ASSET_NAME: main
 on:
   push:
     branches:
@@ -19,14 +21,18 @@ jobs:
         uses: actions/checkout@v4
       - name: Start nullplatform CI
         run: np build start
-      - name: Start test containers
-        run: ./test/containers/script.sh --start
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run tests in containers
+        run: |
+          npm install
+          npm run test
       - name: Build asset
-        run: docker build --build-arg GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} --tag main .
-      - name: Stop test containers
-        run: ./test/containers/script.sh --stop
+        run: docker build --build-arg GITHUB_TOKEN=$GITHUB_TOKEN --tag $ASSET_NAME .
       - name: Push asset
-        run: np asset push --type docker-image --source main
+        run: np asset push --type docker-image --source $ASSET_NAME
       - name: End nullplatform CI
         if: ${{ always() }}
         run: np build update --status ${{ contains(fromJSON('["failure", "cancelled"]'), job.status) && 'failed' || 'successful' }}

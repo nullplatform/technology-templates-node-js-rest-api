@@ -1,6 +1,8 @@
 timeout: 60000
 recursive: true
 parallel: false
+require:
+  - test/fixtures/globalSetup.js
+  - test/fixtures/globalTearDown.js
 exclude:
-  - test/containers/**
   - test/mocks/**
