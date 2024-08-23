@@ -18,10 +18,10 @@
   "client": {
     "apiKey": "API_KEY",
     "auth": {
-      "prefixUrl": "AUTH_HOST"
+      "baseURL": "AUTH_HOST"
     },
     "coreEntities": {
-      "prefixUrl": "CORE_ENTITIES_HOST"
+      "baseURL": "CORE_ENTITIES_HOST"
     }
   },
   "topic": {

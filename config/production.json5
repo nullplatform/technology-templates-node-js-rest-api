@@ -15,10 +15,10 @@
   },
   client: {
     auth: {
-      prefixUrl: 'https://auth.nullplatform.io',
+      baseURL: 'https://auth.nullplatform.io',
     },
     coreEntities: {
-      prefixUrl: 'https://api.nullplatform.io',
+      baseURL: 'https://api.nullplatform.io',
     },
   },
   topic: {

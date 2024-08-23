@@ -1,13 +1,14 @@
 import Config from 'config';
 import { AuthenticatedHttpClient, HttpClient } from '@nullplatform/http-client';
+import { camelCaseToSnakeCase, snakeCaseToCamelCase } from '@nullplatform/json-keys-transform';
 import Logger from '../logger.js';
 import AuthorizationService from './AuthorizationService.js';
 import CoreEntitiesService from './CoreEntitiesService.js';
 import ExampleService from './ExampleService.js';
 import { exampleRepository } from '../repositories/index.js';
 
-const { logging, apiKey, auth: authOptions } = Config.get('client');
-const loggingFunction = logging
+const { logging: loggingConfig, apiKey, auth: authOptions } = Config.get('client');
+const logging = loggingConfig
   ? (event) => {
       if (event.type === 'REQUEST') {
         const request = event.data;
@@ -20,8 +21,16 @@ const loggingFunction = logging
       }
     }
   : false;
+const transform = {
+  request: (data) => {
+    return camelCaseToSnakeCase(data);
+  },
+  response: (data) => {
+    return snakeCaseToCamelCase(data);
+  },
+};
 
-HttpClient.setDefaultOptions({ logging: loggingFunction });
+HttpClient.setDefaultOptions({ logging, transform });
 
 const authClient = new HttpClient({
   ...authOptions,
