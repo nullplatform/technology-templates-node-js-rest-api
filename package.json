@@ -33,7 +33,7 @@
   "homepage": "https://github.com/nullplatform/rest-api#readme",
   "dependencies": {
     "@nullplatform/cluster": "^0.0.6",
-    "@nullplatform/http-client": "^0.0.4",
+    "@nullplatform/http-client": "^0.0.5",
     "@nullplatform/json-keys-transform": "^0.0.3",
     "@nullplatform/json-schema": "^0.0.2",
     "@nullplatform/log": "^0.0.4",
