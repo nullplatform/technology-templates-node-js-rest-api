@@ -15,7 +15,7 @@
     "test": "NODE_ENV=test AWS_ACCESS_KEY_ID=x AWS_SECRET_ACCESS_KEY=x npx mocha",
     "test:coverage": "c8 npm run test",
     "test:unit": "UNIT_TEST=true npm run test test/unit/**/*.spec.js",
-    "test:functional": "AWS_ACCESS_KEY_ID=x AWS_SECRET_ACCESS_KEY=x npm run test test/functional/**/*.spec.js",
+    "test:functional": "npm run test test/functional/**/*.spec.js",
     "test:static": "run-p check:*",
     "fix:fmt": "$npm_package_config_fmt --write",
     "check:fmt": "$npm_package_config_fmt --check",
