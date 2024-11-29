@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "type": "module",
   "config": {
-    "fmt": "prettier --ignore-path .gitignore **/*.+(js|json|yml)",
+    "fmt": "prettier --ignore-path .gitignore **/*.+(js|json|yml|md)",
     "lint": "eslint --ignore-path .gitignore"
   },
   "scripts": {
