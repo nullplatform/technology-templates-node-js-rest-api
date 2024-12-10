@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "type": "module",
   "config": {
-    "fmt": "prettier --ignore-path .gitignore **/*.+(js|json|yml|md)",
-    "lint": "eslint --ignore-path .gitignore"
+    "fmt": "prettier --ignore-path .gitignore **/*.+(js|cjs|json|yml|md)",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.cjs"
   },
   "scripts": {
     "dev": "nodemon src/index.js",
