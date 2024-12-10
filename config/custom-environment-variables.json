@@ -12,7 +12,10 @@
     "password": "DATABASE_PASSWORD",
     "host": "DATABASE_HOST",
     "port": "DATABASE_PORT",
-    "logging": "DATABASE_LOGGING",
+    "logging": {
+      "__name": "DATABASE_LOGGING",
+      "__format": "boolean"
+    },
     "schema": "DATABASE_SCHEMA"
   },
   "client": {
