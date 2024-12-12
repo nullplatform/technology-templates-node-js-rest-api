@@ -2,8 +2,8 @@
   - 'npx prettier'
   - 'npx eslint'
 '*.json':
-  - 'npm prettier'
+  - 'npx prettier'
 '*.yml':
-  - 'npm prettier'
+  - 'npx prettier'
 '*.md':
-  - 'npm prettier'
+  - 'npx prettier'
