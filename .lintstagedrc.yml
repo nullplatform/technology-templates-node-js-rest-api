@@ -1,9 +1,9 @@
 '*.js':
-  - 'npx prettier'
-  - 'npx eslint'
+  - 'npm run check:fmt'
+  - 'npm run check:lint'
 '*.json':
-  - 'npm prettier'
+  - 'npm run check:fmt'
 '*.yml':
-  - 'npm prettier'
+  - 'npm run check:fmt'
 '*.md':
-  - 'npm prettier'
+  - 'npm run check:fmt'

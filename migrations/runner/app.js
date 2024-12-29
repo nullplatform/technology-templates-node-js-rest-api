@@ -44,7 +44,7 @@ const handler = async (event, context) => {
   }
 
   if (!MIGRATION_NRN) {
-    return respond(500, `Missing 'MIGRATION_ORGANIZATION_ID' environment variable`);
+    return respond(500, `Missing 'MIGRATION_NRN' environment variable`);
   }
 
   if (!MIGRATION_USER_ID) {
