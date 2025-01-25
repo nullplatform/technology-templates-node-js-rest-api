@@ -1,9 +1,5 @@
 '*.js':
-  - 'npx prettier'
-  - 'npx eslint'
-'*.json':
-  - 'npx prettier'
-'*.yml':
-  - 'npx prettier'
-'*.md':
-  - 'npx prettier'
+  - 'npx prettier --write'
+  - 'npx eslint --fix'
+'*.{json,yml,md}':
+  - 'npx prettier --write'

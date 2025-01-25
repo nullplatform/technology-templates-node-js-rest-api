@@ -37,14 +37,16 @@ const respond = (statusCode, message) => {
 const handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false;
   const token = event.headers?.Authorization || event.headers?.authorization;
-  const { MIGRATION_ACTION, MIGRATION_NRN, MIGRATION_USER_ID } = options;
+  const {
+    env: { MIGRATION_ACTION, MIGRATION_NRN, MIGRATION_USER_ID },
+  } = options;
 
   if (!MIGRATION_ACTION) {
     return respond(500, `Missing 'MIGRATION_ACTION' environment variable`);
   }
 
   if (!MIGRATION_NRN) {
-    return respond(500, `Missing 'MIGRATION_ORGANIZATION_ID' environment variable`);
+    return respond(500, `Missing 'MIGRATION_NRN' environment variable`);
   }
 
   if (!MIGRATION_USER_ID) {
