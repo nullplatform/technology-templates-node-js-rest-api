@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "type": "module",
   "config": {
-    "fmt": "npx prettier --ignore-path .gitignore **/*.+(js|cjs|json|yml|md)",
+    "format": "npx prettier --ignore-path .gitignore **/*.+(js|cjs|json|yml|md)",
     "lint": "npx eslint --ignore-path .gitignore --ext .js,.cjs"
   },
   "scripts": {
@@ -17,9 +17,9 @@
     "test:unit": "UNIT_TEST=true npm run test test/unit/**/*.spec.js",
     "test:functional": "npm run test test/functional/**/*.spec.js",
     "test:static": "run-p check:*",
-    "check:fmt": "$npm_package_config_fmt --check",
+    "check:format": "$npm_package_config_format --check",
     "check:lint": "$npm_package_config_lint .",
-    "fix:fmt": "$npm_package_config_fmt --write",
+    "fix:format": "$npm_package_config_format --write",
     "fix:lint": "$npm_package_config_lint . --fix",
     "compose:up": "docker-compose up -d",
     "compose:down": "docker-compose down",
