@@ -1,9 +1,12 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'dotenv/config';
+import Tracer from '@nullplatform/observability';
 import Cluster from '@nullplatform/cluster';
 import Config from 'config';
 import server from './server.js';
 import logger from './logger.js';
+
+Tracer.init();
 
 const { host, port, cluster } = Config.get('server');
 

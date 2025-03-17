@@ -47,6 +47,7 @@
     "@nullplatform/json-keys-transform": "^0.0.3",
     "@nullplatform/json-schema": "^0.0.10",
     "@nullplatform/log": "^0.0.4",
+    "@nullplatform/observability": "^0.0.4",
     "@nullplatform/relational-database": "^0.0.9",
     "@nullplatform/server": "^0.0.7",
     "config": "^3.3.12",
