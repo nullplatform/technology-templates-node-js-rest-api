@@ -32,5 +32,11 @@
       "enabled": "AUDIT_TOPIC_ENABLED",
       "topicArn": "AUDIT_TOPIC"
     }
+  },
+  "tracing": {
+    "enabled": {
+      "__name": "TRACING_ENABLED",
+      "__format": "boolean"
+    }
   }
 }

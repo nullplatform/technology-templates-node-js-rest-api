@@ -6,7 +6,11 @@ import Config from 'config';
 import server from './server.js';
 import logger from './logger.js';
 
-Tracer.init();
+const tracingEnabled = Config.get('tracing.enabled');
+
+if (tracingEnabled) {
+  Tracer.init();
+}
 
 const { host, port, cluster } = Config.get('server');
 

@@ -77,4 +77,7 @@
       topicArn: 'arn:aws:sns:us-east-1:283477532906:audit',
     },
   },
+  tracing: {
+    enabled: false,
+  },
 }
