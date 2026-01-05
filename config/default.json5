@@ -6,7 +6,9 @@
     host: '0.0.0.0',
     port: '8080',
     disableRequestLogging: false,
-    maxParamLength: 200,
+    routerOptions: {
+      maxParamLength: 200,
+    },
     openAPI: {
       config: {
         info: {
