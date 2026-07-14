@@ -1,0 +1,71 @@
+# nullplatform CI for Bitbucket Pipelines.
+#
+# Contract:  np build start  ->  make build/push per asset  ->  np build update
+# There is no deploy step here: nullplatform triggers deployments itself.
+#
+# This template builds BOTH a lambda and a docker-image asset via its Makefile, and
+# the Makefile shells out to `docker build`, so the step attaches Bitbucket's docker
+# service. Bitbucket has no build matrix, so the two asset types run sequentially in
+# one step (the Makefile pushes each asset as soon as it is built).
+#
+# REQUIRED REPOSITORY VARIABLES
+#   NULLPLATFORM_API_KEY  - created for you by nullplatform (secured).
+#   GITHUB_TOKEN          - YOU must add this (secured). This template installs private
+#                           @nullplatform packages from https://npm.pkg.github.com (see
+#                           .npmrc), and unlike GitHub Actions, Bitbucket does not mint
+#                           a GitHub token for you. Use a GitHub PAT with read:packages.
+#                           Repository settings -> Pipelines -> Repository variables.
+#
+# Requires Pipelines to be ENABLED on the repository (Repository settings ->
+# Pipelines -> Settings). It is off by default, even with this file present.
+
+image: node:18
+
+definitions:
+  steps:
+    - step: &nullplatform-build
+        name: nullplatform build
+        services:
+          - docker
+        caches:
+          - node
+        script:
+          # Fail fast and legibly instead of dying inside `npm install` with a 401.
+          # ${VAR:-} is required: an unset variable would abort the step under `set -u`.
+          - |
+            if [ -z "${GITHUB_TOKEN:-}" ]; then
+              echo "ERROR: the GITHUB_TOKEN repository variable is not set."
+              echo "This template installs private @nullplatform packages from npm.pkg.github.com (see .npmrc)."
+              echo "Add GITHUB_TOKEN (a GitHub PAT with read:packages) as a SECURED repository variable:"
+              echo "  Repository settings -> Pipelines -> Repository variables"
+              exit 1
+            fi
+          # The np CLI installs to $HOME/.local/bin and does not put itself on PATH
+          # for the current shell -- export it explicitly.
+          - curl -fsSL https://cli.nullplatform.com/install.sh | sh
+          - export PATH="$HOME/.local/bin:$PATH"
+          # `make package-lambda` needs zip, which node:18 does not ship.
+          - apt-get update && apt-get install -y --no-install-recommends zip
+          - np build start
+          # GITHUB_TOKEN is already in the environment (Bitbucket injects repository
+          # variables) and is passed to `docker build --build-arg` by the Makefile.
+          - make build ASSET_TYPE=lambda
+          - make push ASSET_TYPE=lambda
+          - make build ASSET_TYPE=docker-image
+          - make push ASSET_TYPE=docker-image
+          - np build update --status=successful
+        after-script:
+          # after-script runs in the same container but in a NEW shell, so the PATH
+          # export above is gone. Re-export it before calling np.
+          - export PATH="$HOME/.local/bin:$PATH"
+          # Bitbucket has no `if: always()` and no `when: on_failure`.
+          # BITBUCKET_EXIT_CODE is defined ONLY in after-script, and after-script
+          # always runs -- this is the failure path.
+          - if [ "$BITBUCKET_EXIT_CODE" -ne 0 ]; then np build update --status=failed; fi
+
+pipelines:
+  branches:
+    main:
+      - step: *nullplatform-build
+    master:
+      - step: *nullplatform-build
