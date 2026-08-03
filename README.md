@@ -146,3 +146,16 @@ npm run start
 ```
 
 and download the specification under the _/documentation/yaml_ URL, by default should be [this one](http://localhost:8080/documentation/yml)
+
+## CI: required repository variables
+
+| Provider                | Variable               | Who sets it                                                  |
+| ----------------------- | ---------------------- | ------------------------------------------------------------ |
+| all                     | `NULLPLATFORM_API_KEY` | nullplatform, automatically, when the application is created |
+| GitHub Actions          | `GITHUB_TOKEN`         | GitHub, automatically (`secrets.GITHUB_TOKEN`)               |
+| **Bitbucket Pipelines** | **`GITHUB_TOKEN`**     | **you** — Bitbucket does not mint one                        |
+
+This template installs private `@nullplatform` packages from `https://npm.pkg.github.com` (see `.npmrc`).
+On Bitbucket, add `GITHUB_TOKEN` (a GitHub PAT with `read:packages`) as a **secured** repository variable
+under _Repository settings → Pipelines → Repository variables_. Builds fail fast with an explanatory
+message if it is missing.
